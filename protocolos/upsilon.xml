@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!DOCTYPE protocol SYSTEM "application/src/main/resources/protocols-config.dtd">
+<protocol name="UPSILON" type="MONO">
+    <Command>
+        <key>F</key>
+        <alias>Caracteristicas</alias><!--  usedby="MONO, TRI"> -->
+        <description>Resgata caracteristicas sobre o UPS</description>
+        <!-- Pattern: : F<CR> -->
+        <Request beanType="ComandoNobreak">
+            <param name="Comando" type="char" value="F"/>
+        </Request>
+        <!-- Pattern: #MMM.M QQQ SS.SS RR.R<CR>
+                      -->
+        <Response beanType="CaracteristicasBean" start="1" validation="false">
+            <param name="FaixaTensao" size="6" type="string"/>
+            <param name="FaixaCorrente" size="4" type="string"/>
+            <param name="TensaoBateria" size="6" type="string"/>
+            <param name="Frequencia" size="4" type="string"/>
+        </Response>
+    </Command>
+
+    <Command>
+        <key>F</key>
+        <alias>CaracteristicasDefault</alias><!--  usedby="MONO, TRI"> -->
+        <description>Resgata caracteristicas padrão sobre o UPS</description>
+        <!-- Pattern: : F<CR> -->
+        <Request beanType="CaracteristicasBean">
+            <param name="FaixaTensao" size="4" type="string" value="0"/>
+            <param name="FaixaCorrente" size="2" type="string" value="0"/>
+            <param name="TensaoBateria" size="4" type="string" value="0"/>
+            <param name="Frequencia" size="3" type="string" value="0"/>
+        </Request>
+    </Command>
+
+    <Command>
+        <key>I</key>
+        <alias>Informacoes</alias><!--  usedby="MONO, TRI"> -->
+        <description>Resgata Informacoes sobre o UPS</description>
+        <!-- Pattern: : I<CR> -->
+        <Request beanType="ComandoNobreak">
+            <param name="Comando" type="char" value="I"/>
+        </Request>
+        <!-- Pattern: #Company_Name UPS_Model Version<CR>
+                      -->
+        <Response beanType="InformacoesBean" start="15" validation="false">
+            <param name="Modelo" size="10" type="string"/>
+            <param name="Versao" size="10" type="string"/>
+        </Response>
+    </Command>
+
+    <Command>
+        <key>I</key>
+        <alias>InformacoesDefault</alias>
+        <description>Resgata informações do UPS</description>
+        <Request beanType="InformacoesBean">
+            <param name="Modelo" size="1" type="string" value=""/>
+            <param name="Versao" size="1" type="string" value=""/>
+        </Request>
+    </Command>
+
+    <Command>
+        <key>Q1</key>
+        <alias>MedidoresEstado</alias><!--  usedby="MONO, TRI"> -->
+        <description>Resgata medidores e status do UPS</description>
+        <!-- Pattern: : Q1<CR> -->
+        <Request beanType="ComandoNobreak">
+            <param name="Comando" type="char" value="Q"/>
+            <param name="Param1" type="char" value="1"/>
+            <param name="CaracterInicial" type="char" value="("/>
+            <param name="TamanhoResposta" type="int" value="47"/>
+        </Request>
+        <!-- Pattern: MMM.M NNN.N PPP.P QQQ RR.R S.SS TT.T b7b6b5b4b3b2blb0<CR>
+                      -->
+        <Response beanType="MedidorEstadoUpsilonBean" validation="false" start="1">
+            <param name="TensaoEntrada" size="6" type="string"/>
+            <param name="UltimaTensao" size="6" type="string"/>
+            <param name="TensaoSaida" size="6" type="string"/>
+            <param name="PotenciaSaida" size="4" type="string"/>
+            <param name="FrequenciaSaida" size="5" type="string"/>
+            <param name="PorcentagemTensaoBateria" size="5" type="string"/>
+            <param name="Temperatura" size="5" type="string"/>
+            <param name="BateriaLigada" size="1" type="boolean"/>
+            <param name="BateriaBaixa" size="1" type="boolean"/>
+            <param name="ByPass" size="1" type="boolean"/>
+            <param name="Boost" size="1" type="boolean" refs="ByPass" calc="({Boost}*-1)+1" ignore="true"/>
+            <param name="UpsOk" size="1" type="boolean" calc="({UpsOk}*-1)+1"/>
+            <param name="Standby" size="1" type="boolean"/>
+            <param name="TesteAtivo" size="1" type="boolean"/>
+            <param name="ShutdownAtivo" size="1" type="boolean"/>
+            <param name="BeepLigado" size="1" type="boolean"/>
+        </Response>
+    </Command>
+
+    <Command> <!-- key="Q" alias="MedidoresEstado"> -->
+        <key>Q1</key>
+        <alias>MedidoresEstadoDefault</alias><!-- usedby="MONO, TRI"> -->
+        <description>Resgata um bean com os valores pré-definidos para os medidores e status do UPS</description>
+        <!-- Pattern: ‘Q’ Xh Xh Xh Xh CK <CR> -->
+        <Request beanType="MedidorEstadoBean">
+            <param name="UltimaTensao" size="1" type="string" value="0"/>
+            <param name="TensaoEntrada" size="1" type="string" value="0"/>
+            <param name="TensaoSaida" size="1" type="string" value="0"/>
+            <param name="PotenciaSaida" size="1" type="string" value="0"/>
+            <param name="FrequenciaSaida" size="1" type="string" value="0"/>
+            <param name="PorcentagemTensaoBateria" size="1" type="string" value="0"/>
+            <param name="Temperatura" size="1" type="string" value="0"/>
+            <param name="BeepLigado" size="1" type="boolean" value="false"/>
+            <param name="ShutdownAtivo" size="1" type="boolean" value="false"/>
+            <param name="TesteAtivo" size="1" type="boolean" value="false"/>
+            <param name="UpsOk" size="1" type="boolean" value="false"/>
+            <param name="Boost" size="1" type="boolean" value="false"/>
+            <param name="ByPass" size="1" type="boolean" value="false"/>
+            <param name="BateriaBaixa" size="1" type="boolean" value="false"/>
+            <param name="BateriaLigada" size="1" type="boolean" value="false"/>
+            <param name="Tipo" size="2" type="string" value="UPS Line Interative"/>
+        </Request>
+    </Command>
+
+    <!-- ################################################# Disparos ################################################# -->
+
+    <Command>
+        <key>TL</key>
+        <alias>TesteBateriaBaixa</alias><!--  usedby="MONO, TRI"> -->
+        <description>Executa teste de bateria até que a mesma se torne baixa</description>
+        <!-- Pattern: : TL<CR> -->
+        <Request beanType="ComandoNobreak"> <!-- beanType="ComandoNobreakSR" -->
+            <param name="Comando" type="char" value="T"/>
+            <param name="Param1" type="char" value="L"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>T</key>
+        <alias>TestePorSegundos</alias><!--  usedby="MONO, TRI"> -->
+        <description>Executa teste de bateria por n segundos</description>
+        <!-- Pattern: : T<CR> -->
+        <Request beanType="ComandoNobreak">
+            <param name="Comando" type="char" value="T"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>Q</key>
+        <alias>MudaBeep</alias>
+        <description>Muda o beep</description>
+        <Request beanType="ComandoNobreak">
+            <!-- Pattern: Q<CR> -->
+            <param name="Comando" type="char" value="Q"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>S</key>
+        <alias>ShutdownPorSegundos</alias>
+        <description>Shutdown por n segundos</description>
+        <Request beanType="ComandoNobreak">
+            <!-- Pattern: S<n><CR> -->
+            <param name="Comando" type="char" value="S"/>
+            <param name="Param1" type="char" value="a"/>
+            <param name="Param2" type="char" value="b"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>SR</key>
+        <alias>ShutdownRestore</alias>
+        <description>Shutdown e restore</description>
+        <Request beanType="ComandoNobreakSR">
+            <!-- Pattern: : S<n>R<m><CR> -->
+            <param name="Comando" type="char" value="S"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>C</key>
+        <alias>CancelarShutdownRestore</alias>
+        <description>Cancela o Shutdown e restore</description>
+        <Request beanType="ComandoNobreak">
+            <!-- Pattern: C<CR> -->
+            <param name="Comando" type="char" value="C"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+
+    <Command>
+        <key>CT</key>
+        <alias>CancelarTeste</alias>
+        <description>Cancelamento de Teste</description>
+        <Request beanType="ComandoNobreak">
+            <!-- Pattern: CT<CR> -->
+            <param name="Comando" type="char" value="C"/>
+            <param name="Param1" type="char" value="T"/>
+        </Request>
+        <!--
+            <Response>
+                This command has no response
+            </Response>
+        -->
+    </Command>
+</protocol>

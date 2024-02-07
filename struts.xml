@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+    <include file="struts-default.xml"/>
+
+    <constant name="struts.action.excludePattern" value="export*,sms/export*,delete*,sms/delete*"/>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+
+    <package name="privado" namespace="/" extends="struts-default" strict-method-invocation="false">
+
+        <interceptors>
+            <interceptor name="localeInterceptor"
+                         class="br.com.sms.powerview.iface.interceptor.LocaleInterceptor"/>
+
+            <interceptor name="loginInterceptor"
+                         class="br.com.sms.powerview.iface.interceptor.LoginInterceptor"/>
+
+            <interceptor-stack name="autenticatorStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="localeInterceptor"/>
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation"/>
+                <interceptor-ref name="workflow"/>
+            </interceptor-stack>
+
+            <interceptor-stack name="formInterceptor">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="localeInterceptor"/>
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="validation"/>
+                <interceptor-ref name="workflow"/>
+
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="autenticatorStack"/>
+
+        <!-- ========== Global Forward Definitions ============================== -->
+        <global-results>
+            <result name="logoff">/logoff.action</result>
+            <result name="falhaLogin" type="redirectAction">
+                <param name="actionName">/s2/checaSenha!login.action</param>
+                <param name="mensagemErro">${mensagemErro}</param>
+            </result>
+            <result name="error">/pages/erro.jsp</result>
+            <result name="download" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">arquivoDownload</param>
+                <param name="contentDisposition">attachment;filename="${nomeArquivo}"</param>
+                <param name="bufferSize">1024</param>
+                <param name="contentCharSet">utf-8</param>
+            </result>
+        </global-results>
+
+        <!-- ========== Action Mapping Definitions ============================== -->
+
+        <action name="listarAgendaEventos"
+                class="br.com.sms.powerview.iface.action.GetAgendaEventosAction">
+            <result name="success">/pages/includes/listarAgendaEventos.jsp</result>
+        </action>
+
+        <action name="atualizaInfo"
+                class="br.com.sms.powerview.iface.action.AtualizaIframeInfoAction">
+            <result name="success">/pages/includes/atualizaIframeInfo.jsp</result>
+        </action>
+
+        <action name="atualizaBlock"
+                class="br.com.sms.powerview.iface.action.AtualizaIframeBlockAction">
+            <result name="success">/pages/includes/atualizaIframeBloco.jsp</result>
+        </action>
+
+        <action name="cadastrarTarefa"
+                class="br.com.sms.powerview.iface.action.CadastrarTarefaAction">
+            <result name="success">/pages/cadastrarTarefa.jsp</result>
+        </action>
+
+        <action name="editarTarefa"
+                class="br.com.sms.powerview.iface.action.EditarTarefaAction">
+            <result name="success">/pages/editarTarefa.jsp</result>
+        </action>
+
+        <action name="salvarTarefa"
+                class="br.com.sms.powerview.iface.action.SalvarTarefaAction">
+            <result name="success">listarAgendaEventos</result>
+            <result name="error_listar">listarAgendaEventos</result>
+            <result name="error">/pages/cadastrarTarefa.jsp</result>
+            <result name="form">/pages/cadastrarTarefa.jsp</result>
+        </action>
+
+        <action name="telaDisparos"
+                class="br.com.sms.powerview.iface.action.GetDisparosAction">
+            <result name="success">/pages/telaDisparos.jsp</result>
+        </action>
+
+        <action name="dispararEvento"
+                class="br.com.sms.powerview.iface.action.DispararEventoAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">/s2/telaDisparos</param>
+                <param name="mensagemErro">${mensagemErro}</param>
+            </result>
+        </action>
+
+        <action name="editarMensagem"
+                class="br.com.sms.powerview.iface.action.EditarMensagensAction">
+            <result name="success">/pages/editarMensagens.jsp</result>
+        </action>
+
+        <action name="salvarMensagem"
+                class="br.com.sms.powerview.iface.action.SalvarMensagensAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">/s2/listarMensagem</param>
+                <param name="erro">${erro}</param>
+                <param name="msg">${msg}</param>
+            </result>
+        </action>
+
+        <action name="dumpLog"
+                class="br.com.sms.powerview.iface.action.trifasico.DumpLogAction">
+            <result name="success">/pages/listaDumplog.jsp</result>
+        </action>
+
+        <action name="historico"
+                class="br.com.sms.powerview.iface.action.ListarHistoricoLogsAction">
+            <result name="success">/pages/opcoesLog.jsp</result>
+        </action>
+
+        <action name="listarHistorico"
+                class="br.com.sms.powerview.iface.action.GetListaHistoricoAction">
+            <result name="success">/pages/listarHistorico.jsp</result>
+        </action>
+
+        <action name="arquivosLog"
+                class="br.com.sms.powerview.iface.action.ArquivoLogAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">/s2/listarHistorico</param>
+                <param name="mensagemErro">${mensagemErro}</param>
+                <param name="tipoLog">${tipoLog}</param>
+            </result>
+        </action>
+
+        <action name="listarTestesAutonomia"
+                class="br.com.sms.powerview.iface.action.GetTestesAutonomiaAction">
+            <result name="success">/pages/listarLogTesteAutonomia.jsp</result>
+        </action>
+
+        <action name="listarLogProcesso"
+                class="br.com.sms.powerview.iface.action.GetListaLogProcessoAction">
+            <result name="success">/pages/listarLogProcesso.jsp</result>
+        </action>
+
+        <action name="listarLogDisparos"
+                class="br.com.sms.powerview.iface.action.GetLogDisparosAction">
+            <result name="success">/pages/listarLogDisparo.jsp</result>
+        </action>
+
+        <action name="removerTodosEventos"
+                class="br.com.sms.powerview.iface.action.RemoverTodosEventosAction">
+            <result name="success">listarLogDisparos.action</result>
+        </action>
+
+        <action name="listarLogDados"
+                class="br.com.sms.powerview.iface.action.GetLogDadosAction">
+            <result name="success">/pages/listarLogDado.jsp</result>
+        </action>
+
+        <action name="removerTodosDados"
+                class="br.com.sms.powerview.iface.action.RemoverTodosDadosAction">
+            <result name="success">listarLogDados.action</result>
+        </action>
+
+
+        <action name="Principal"
+                class="br.com.sms.powerview.iface.action.TelaPrincipalAction">
+            <result name="success">/pages/principal.jsp</result>
+        </action>
+
+        <action name="Monitores"
+                class="br.com.sms.powerview.iface.action.TelaDigitalAction">
+            <result name="success">/pages/monitores.jsp</result>
+            <result name="successTrifasico">/pages/monitoresTrifasico.jsp</result>
+        </action>
+
+        <action name="Bloco"
+                class="br.com.sms.powerview.iface.action.TelaBlockAction">
+            <result name="success">/pages/telaBloco.jsp</result>
+        </action>
+
+        <action name="listaClientes"
+                class="br.com.sms.powerview.iface.action.GetClientesAction">
+            <result name="success">/pages/listarClientes.jsp</result>
+        </action>
+
+
+        <action name="editarTelaConfiguracoes"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesAction">
+            <result name="success">/pages/telaConfiguracoes.jsp</result>
+        </action>
+
+        <action name="salvarTelaConfiguracoes"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesAction">
+            <result name="broadcast">editarTelaConfiguracoesBroadcast.action</result>
+            <result name="shutdown">editarTelaConfiguracoesShutdown.action</result>
+            <result name="proxy">editarTelaConfiguracoesProxy.action</result>
+            <result name="logs">editarTelaConfiguracoesLogs.action</result>
+        </action>
+
+        <action name="salvarTelaConfiguracoesGeral"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesGeralAction">
+            <result name="success">editarTelaConfiguracoes.action</result>
+            <result name="mudou_senha">/pages/reloadPage.jsp</result>
+        </action>
+
+        <action name="salvarTelaConfiguracoesBroadcast"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesBroadcastAction">
+            <result name="success">/pages/telaConfiguracoesBroadcast.jsp</result>
+        </action>
+
+        <action name="editarTelaConfiguracoesBroadcast"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesAction">
+            <result name="success">/pages/telaConfiguracoesBroadcast.jsp</result>
+        </action>
+
+        <action name="listarMensagem"
+                class="br.com.sms.powerview.iface.action.ListarMensagensAction">
+            <result name="success">/pages/listarMensagens.jsp</result>
+        </action>
+
+        <action name="telaTesteEmail"
+                class="br.com.sms.powerview.iface.action.TelaTesteEmail">
+            <result name="success">/pages/telaTesteEmail.jsp</result>
+        </action>
+
+        <action name="enviarTesteEmail"
+                class="br.com.sms.powerview.iface.action.EnviarTesteEmailAction">
+            <result name="success">/pages/telaConfiguracoesBroadcast.jsp</result>
+        </action>
+
+        <action name="configuracoesAlerta"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesAlertaAction">
+            <result name="success">/pages/telaConfiguracoesWs.jsp</result>
+            <!-- <result name="listarProds">listarProdutosUsuario.action</result>
+            <result name="logoff">salvarConfiguracoesAlerta!mostrarProd.action</result> -->
+        </action>
+
+        <action name="listarProdutosUsuario"
+                class="br.com.sms.powerview.iface.action.GetListaProdutosAction">
+            <result name="success">salvarConfiguracoesAlerta!associarProdutoSerial.action</result>
+            <result name="error">/pages/telaConfiguracoesWs.jsp</result>
+            <result name="logoff">configuracoesAlerta.action</result>
+        </action>
+
+        <action name="salvarConfiguracoesAlerta"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesAlertaAction">
+            <result name="success">/pages/telaConfiguracoesWs.jsp</result>
+            <result name="error">/pages/telaConfiguracoesWs.jsp</result>
+        </action>
+
+        <action name="configuracoesGatewayMobile"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesGatewayMobileAction">
+            <result name="success">/pages/telaConfiguracoesGatewayMobile.jsp
+            </result>
+        </action>
+
+        <action name="salvarConfiguracoesGatewayMobile"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesGatewayMobileAction">
+            <result name="success">/pages/telaConfiguracoesWs.jsp
+            </result>
+            <result name="error">/pages/telaConfiguracoesWs.jsp
+            </result>
+        </action>
+
+        <action name="configuracoesProxy"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesProxyAction">
+            <result name="success">/pages/telaConfiguracoesProxy.jsp</result>
+        </action>
+
+        <action name="salvarConfiguracoesProxy"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesProxyAction">
+            <result name="success">/pages/telaConfiguracoesProxy.jsp</result>
+        </action>
+
+        <action name="configuracoesLogs"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesLogsAction">
+            <result name="success">/pages/telaConfiguracoesLog.jsp</result>
+        </action>
+
+        <action name="salvarConfiguracoesLogs"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesLogsAction">
+            <result name="success">/pages/telaConfiguracoesLog.jsp</result>
+        </action>
+
+        <action name="editarTelaConfiguracoesShutdown"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesAction">
+            <result name="success">/pages/telaConfiguracoesShutdown.jsp</result>
+        </action>
+
+        <action name="salvarTelaConfiguracoesShutdown"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesShutdownAction">
+            <result name="success">editarTelaConfiguracoesShutdown.action</result>
+        </action>
+
+        <action name="editarTelaConfiguracoesPopup"
+                class="br.com.sms.powerview.iface.action.EditarConfiguracoesAction">
+            <result name="success">/pages/telaConfiguracoesPopup.jsp</result>
+        </action>
+
+        <action name="salvarTelaConfiguracoesPopup"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesPopupAction">
+            <result name="success">editarTelaConfiguracoesPopup.action</result>
+        </action>
+
+        <action name="telaUsuariosMobile"
+                class="br.com.sms.powerview.iface.action.SalvarConfiguracoesMobileAction">
+            <result name="success">/pages/telaConfiguracoesMobile.jsp</result>
+            <result name="input">/pages/includes/qrcode.jsp</result>
+        </action>
+
+        <action name="telaRedeMobile"
+                class="br.com.sms.powerview.iface.action.RedeMobileAction">
+            <result name="success">/pages/telaRedeMobile.jsp</result>
+        </action>
+
+        <action name="configuracaoEmailMsg"
+                class="br.com.sms.powerview.iface.action.EmailMensagemAction">
+            <result name="success">/pages/telaConfiguracoesEmailMsg.jsp</result>
+            <result name="error">/pages/telaConfiguracoesEmailMsg.jsp</result>
+            <result name="form">/pages/telaConfiguracoesEmailMsgForm.jsp</result>
+        </action>
+
+        <action name="arquivoRelatorioSimplificado"
+                class="br.com.sms.powerview.iface.action.ArquivoRelatorioSimplificadoAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">arquivoDownload</param>
+                <param name="contentDisposition">attachment;filename="relatorio.txt"</param>
+                <param name="bufferSize">1024</param>
+                <param name="contentCharSet">utf-8</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="default" extends="struts-default" strict-method-invocation="false">
+        <interceptors>
+            <interceptor name="localeInterceptor"
+                         class="br.com.sms.powerview.iface.interceptor.LocaleInterceptor"/>
+
+            <interceptor-stack name="autenticatorStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="localeInterceptor"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation"/>
+                <interceptor-ref name="workflow"/>
+            </interceptor-stack>
+
+        </interceptors>
+
+        <default-interceptor-ref name="autenticatorStack"/>
+
+        <action name="checaSenha"
+                class="br.com.sms.powerview.iface.action.ChecaSenhaAction">
+            <result name="success">Principal.action</result>
+            <result name="falhaLogin">/pages/login.jsp</result>
+        </action>
+
+    </package>
+
+    <!-- ========== Controller Configuration ================================ -->
+    <!-- <controller> <set-property property="inputForward" value="true" />
+        </controller> -->
+
+    <!-- ========== Message Resources Definitions =========================== -->
+    <!-- <message-resources parameter="ApplicationResources" /> -->
+    <!-- ========== Plug Ins Configuration ================================== -->
+    <!-- <plug-in className="org.apache.struts.validator.ValidatorPlugIn"> <set-property
+        property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"
+        /> </plug-in> -->
+    <!-- <constant name="struts.ognl.allowStaticMethodAccess" value="true"/> -->
+
+</struts>
