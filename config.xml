@@ -8,7 +8,6 @@
     </properties>
     <files>
         <file path=".jpackage.xml" size="466" checksum="90ca207"/>
-        <file path="config.xml" size="29160" checksum="f95b7fb2"/>
         <file path="libs/a24h-1.0.jar" size="28269" checksum="c091ec1" classpath="true"/>
         <file path="libs/aopalliance-repackaged-2.6.1.jar" size="27006" checksum="d505323" classpath="true"/>
         <file path="libs/apns-0.2.3.jar" size="54144" checksum="3176c0e8" classpath="true"/>
