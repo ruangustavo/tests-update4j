@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<jpackage-state version="17.0.9" platform="windows">
+  <app-version>1.0</app-version>
+  <main-launcher>SmsPvd</main-launcher>
+  <signed>false</signed>
+  <add-launcher>SmsPvdService</add-launcher>
+  <add-launcher>StartSmsPvdService</add-launcher>
+  <add-launcher>StopSmsPvdService</add-launcher>
+  <add-launcher>SmsPvdTerminal</add-launcher>
+  <add-launcher>SmsPvdDebug</add-launcher>
+  <add-launcher>Comunicacao</add-launcher></jpackage-state>

@@ -1,0 +1,857 @@
+.logoSMS-Sobre:before {
+    content: url("/sms/imagens/logoSMS.png");
+}
+
+.logoLegrand-Sobre:before {
+    content: url("/sms/imagens/logoLegran.png");
+}
+
+.logoPV, .logoLegrand {
+    padding: 15px !important;
+}
+
+.logoPV {
+    float: left
+}
+
+.logoLegrand {
+    float: right;
+}
+
+.padding-none {
+    padding: 0 !important
+}
+
+.margin-none {
+    margin: 0 !important
+}
+
+@media (min-width: 992px) {
+    .logoPV:before {
+        content: url("/sms/imagens/logoSMS.png");
+    }
+
+    .logoLegrand:before {
+        content: url("/sms/imagens/logoLegran.png");
+    }
+}
+
+@media (max-width: 991px) {
+    .logoPV:before {
+        content: url("/sms/imagens/logoSMS_md.png");
+    }
+
+    .logoLegrand:before {
+        content: url("/sms/imagens/logoLegran_md.png");
+    }
+}
+
+@media (max-width: 768px) {
+    .logoPV {
+        padding: 0 !important;
+        margin-left: 4px !important;
+        margin-top: 4px;
+    }
+
+    .logoLegrand {
+        margin-left: 4px;
+    }
+
+    .logoPV:before {
+        content: url("/sms/imagens/logoSMS_min.png");
+    }
+
+    .logoLegrand:before {
+        content: url("/sms/imagens/logoLegran_min.png");
+    }
+
+    .headerLogin {
+        padding: 0 !important
+    }
+
+    .status {
+        clear: both;
+    }
+
+    .navbar-header {
+        background-color: #f5f5f5;
+    }
+}
+
+@media (max-width: 554px) {
+    .logoSMS-Sobre:before {
+        content: url("/sms/imagens/logoSMS_min.png");
+    }
+
+    .logoLegrand-Sobre:before {
+        content: url("/sms/imagens/logoLegran_min.png");
+    }
+}
+
+.status {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    list-style: none;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.status blockquote {
+    border-color: #ddd;
+    border-color: rgba(0, 0, 0, 0.15)
+}
+
+.status-lg {
+    padding: 24px;
+    border-radius: 6px
+}
+
+.status-sm {
+    padding: 9px;
+    border-radius: 3px
+}
+
+.nomeDigital {
+    font-size: 16px;
+    color: #3E729F;
+    text-align: center;
+}
+
+.DigitalValor {
+    font-size: 26px;
+    color: #333333;
+    text-align: center;
+    float: left;
+    width: 70%
+}
+
+.DigitalValor span {
+    font-size: 22px;
+}
+
+.DigitalMin {
+    font-size: 16px;
+    color: #3E729F;
+    float: left;
+    width: 15%;
+    line-height: 37px;
+    font-weight: bold;
+}
+
+.DigitalMax {
+    font-size: 16px;
+    color: #339900;
+    float: right;
+    width: 15%;
+    line-height: 37px;
+    font-weight: bold;
+}
+
+.status {
+    list-style: none;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.statusOn {
+    background: url("/sms/imagens/statusOn.png") center left no-repeat;
+    padding-left: 20px;
+}
+
+.statusOff {
+    background: url("/sms/imagens/statusOff.png") center left no-repeat;
+    padding-left: 20px;
+}
+
+.legendas span {
+    margin-right: 20px;
+}
+
+.icoMinimo {
+    background: url("/sms/imagens/ico_minimo.png") center left no-repeat;
+    padding-left: 20px;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.icoMaximo {
+    background: url("/sms/imagens/ico_maximo.png") center left no-repeat;
+    padding-left: 20px;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.icoAtual {
+    background: url("/sms/imagens/ico_valoratual.png") center left no-repeat;
+    padding-left: 20px;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.icoSalvar {
+    background: url("/sms/imagens/ico_salvar.png") no-repeat;
+}
+
+h4 {
+    font-size: 18px;
+    color: #3e729f;
+}
+
+h2 {
+    font-size: 18px;
+    color: #3e729f;
+}
+
+.status h2 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.table.thead.tr.th {
+    background-color: #D2E3F5;
+}
+
+.Aplicativo {
+    background: url("/sms/imagens/ico_download.jpg") center left no-repeat;
+    padding: 2px 25px;
+    line-height: 22px;
+}
+
+.form-control2 {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.radio .form-control {
+    height: 30px;
+    width: 70px;
+!important;
+    height: 30px;
+    float: left;
+}
+
+.radio label {
+    padding-left: 0;
+}
+
+.agenda {
+    background: url("/sms/imagens/ico_agenda.png") no-repeat;
+    height: 16px;
+    width: 20px;
+}
+
+.ico_disparo {
+    background: url("/sms/imagens/ico_disparo.png") no-repeat;
+    padding: 0px 15px;
+    height: 16px;
+    margin-top: 5px;
+}
+
+.ico_conectar {
+    background: url("/sms/imagens/ico_conectar.png") no-repeat;
+    padding: 0px 15px;
+    height: 16px;
+    margin-top: 5px;
+}
+
+.ico_novatarefa {
+    background: url("/sms/imagens/ico_novatarefa.png") no-repeat;
+    padding: 0px 15px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ico_salvar {
+    background: url("/sms/imagens/ico_salvar.png") no-repeat;
+    padding: 2px 10px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ico_config {
+    background: url("/sms/imagens/ico_config.png") no-repeat;
+    padding: 0px 10px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ico_email {
+    background: url("/sms/imagens/ico_email.png") no-repeat;
+    padding: 0px 12px 0px 10px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-position: 0% 50%;
+}
+
+.ico_sobre, .ico_sobre:hover {
+    background: url("/sms/imagens/ico_sobre.png") no-repeat;
+    height: 17px;
+    padding-left: 16px;
+    border-radius: 8px;
+    margin-right: 2px;
+}
+
+.ico_excluir {
+    background: url("/sms/imagens/ico_excluir.png") no-repeat;
+    height: 20px;
+    width: 18px;
+    cursor: pointer;
+    padding-bottom: 4px;
+    padding-left: 20px
+}
+
+.ico_editar {
+    background: url("/sms/imagens/ico_editar.png") no-repeat;
+    height: 20px;
+    width: 18px;
+    cursor: pointer;
+    padding-bottom: 4px;
+    padding-left: 20px
+}
+
+.ico_tensaoEntrada {
+    background: url("/sms/imagens/ico_tensaoEntrada.png") no-repeat;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    margin: auto;
+}
+
+.ico_tensaoSaida {
+    background: url("/sms/imagens/ico_tensaoSaida.png") no-repeat;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    margin: auto;
+}
+
+.ico_potenciaSaida {
+    background: url("/sms/imagens/ico_potenciaSaida.png") no-repeat;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    margin: auto;
+}
+
+.control-group {
+    margin-top: 10px;
+}
+
+.shutdown {
+    padding: 15px 20px 20px 20px;
+}
+
+.shutdown .form-control {
+    width: 70px;
+    height: 30px;
+    display: table-row;
+}
+
+p.resposta-shutdown {
+    text-indent: 23px;
+}
+
+.extra4 {
+    font-size: 12px;
+    WIDTH: 100%;
+    BACKGROUND: #F5F5F5;
+    color: #3E729F;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.obs {
+    padding: 15px 40px 20px 10px;
+!important;
+    margin-top: 20px;
+    font-size: 11px;
+    color: #cc0000;
+}
+
+.obs p {
+    color: #666;
+    line-height: 10px;
+}
+
+
+.alerta24h {
+    padding: 15px 50px 20px 50px;
+    margin-bottom: 40px;
+}
+
+.gatewayMobile {
+    padding: 15px 50px 20px 50px;
+    margin-bottom: 40px;
+}
+
+.descricao {
+    padding: 15px 40px 20px 50px;
+}
+
+.alertalogado {
+    background-color: #799BC1;
+    min-height: 35px;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    clear: both;
+}
+
+.alertalogado a {
+    color: #fff;
+}
+
+.alertalogado a:hover {
+    color: #fff;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-left: 0 !important;
+}
+
+a.btn, table tr td a.btn {
+    padding: 6px;
+}
+
+td.btn-column {
+    text-align: center;
+}
+
+.btn-interno {
+    background-color: #799BC1;
+    height: 35px;
+    color: #fff;
+    float: right;
+}
+
+.btn-interno .btn:hover .btn:focus {
+    color: #fff;
+}
+
+.alertalogado .login {
+    float: left;
+}
+
+.alertalogado .acao {
+    float: right;
+}
+
+.Gtrifasico {
+    padding: 15px;
+    background-color: #F5F5F5;
+    display: table;
+    width: 100%;
+}
+
+.Gtrifasico h4 {
+    text-align: center;
+}
+
+.Gtrifasico .panel-default > .panel-heading {
+    background-color: #f5f5f5;
+}
+
+.navbar-header .logo {
+    padding: 10px 0;
+}
+
+.info {
+    text-align: center;
+    line-height: 15px;
+}
+
+.infoEvento {
+    text-align: center;
+    line-height: 26px;
+    font-size: 20px;
+}
+
+header {
+    background-color: #f5f5f5;
+}
+
+header div.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.medidor {
+    padding-left: 0px !important
+}
+
+#conteudo-principal {
+    padding-left: 0px;
+}
+
+#conteudo-infor {
+    padding-right: 0px;
+}
+
+#conteudo {
+    padding-top: 30px;
+}
+
+#navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+a.sobre {
+    float: right;
+    margin-top: 14px;
+    line-height: 20px
+}
+
+.pagination {
+    margin-top: 0;
+}
+
+@media (min-width: 992px) {
+    #navbar, header .container {
+        width: 960px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 496px) {
+    .status {
+        overflow-x: auto;
+    }
+}
+
+.detalhe {
+    width: 18%;
+}
+
+#responsive {
+    text-align: center;
+    display: block;
+    width: 760px;
+    margin-left: -380px;
+    margin-top: -80px;
+    background-color: #ccc;
+    height: 350px;
+    border-radius: 6px;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    outline: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    border: none;
+    padding: 20px 15px 0px 10px;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    color: #000;
+}
+
+#modal-use-terms {
+    text-align: center;
+    display: block;
+    width: 760px;
+    margin-left: -380px;
+    margin-top: -80px;
+    background-color: #ccc;
+    height: 260px;
+    border-radius: 6px;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    outline: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+#panel-accept-cookies {
+    display: none;
+    width: 100%;
+    height: 70px;
+    background: #779CBF;
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    font-size: 13px;
+}
+
+#panel-accept-cookies .row {
+    text-align: center;
+}
+
+#panel-accept-cookies .container-accept-message {
+    padding-top: 18px;
+    display: inline-block;
+}
+
+#panel-accept-cookies .container-accept-message .accept-message {
+    margin: 0;
+    color: #fff;
+}
+
+#panel-accept-cookies .container-accept-message .accept-message .privacity-link {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#panel-accept-cookies .container-accept-message button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.extra {
+    LEFT: 61px;
+    font-size: 11px;
+    ZINDEX: 2;
+    BORDER: 1px solid #ccc;
+    VISIBILITY: hidden;
+    color: #369;
+}
+
+.extra2 {
+    LEFT: 61px;
+    font-size: 11px;
+    WIDTH: 100%;
+    HEIGHT: 39px;
+    ZINDEX: 2;
+    BACKGROUND: #EFF0E0;
+    BORDER: 1px solid #ccc;
+    VISIBILITY: hidden;
+    color: #963;
+}
+
+.campo-form {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.msgErro {
+    color: #f00;
+    font-weight: bold;
+}
+
+.msgSucesso {
+    color: #006600;
+    font-weight: bold;
+}
+
+.scroll-container {
+    overflow-y: scroll;
+    max-height: 282px;
+}
+
+.ico_azul {
+    width: 20px;
+    height: 20px;
+    padding-left: 22px;
+    padding-bottom: 4px;
+    vertical-align: bottom;
+}
+
+.ico_apagar {
+    background: url('/sms/imagens/ico_apagar.png') no-repeat;
+}
+
+.ico_filtrar {
+    background: url('/sms/imagens/ico_filtrar.png') no-repeat;
+}
+
+.ico_exportar {
+    background: url('/sms/imagens/ico_exportar.png') no-repeat;
+}
+
+.ico_enviar {
+    background: url('/sms/imagens/ico_enviar.png') no-repeat;
+}
+
+.list-mensagem-eventos li a {
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+}
+
+.ico_evento {
+    padding: 0px 10px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ico_evento_1 {
+    background: url('/sms/imagens/ic_FalhaAC.png') no-repeat;
+}
+
+.ico_evento_2 {
+    background: url('/sms/imagens/ic_Autonomiabaixa.png') no-repeat;
+}
+
+.ico_evento_3 {
+    background: url('/sms/imagens/ic_ACrestaurado.png') no-repeat;
+}
+
+.ico_evento_4 {
+    background: url('/sms/imagens/ic_Recautonomiabaixa.png') no-repeat;
+}
+
+.ico_evento_5 {
+    background: url('/sms/imagens/ic_Shutdownacionado.png') no-repeat;
+}
+
+.ico_evento_6 {
+    background: url('/sms/imagens/ic_Shutdowncancelado.png') no-repeat;
+}
+
+.ico_evento_7 {
+    background: url('/sms/imagens/ic_Bateriabaixa .png') no-repeat;
+}
+
+.tabelaLogDadosTri {
+    overflow-x: auto
+}
+
+/* LOGIN */
+.panel {
+    background: #e5e3e9;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.panel h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    background: #5094ba;
+    margin: 0;
+    padding: 15px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-senha {
+    padding-left: 35px;
+    background: url(/sms/imagens/ico-senha.png) #ffffff 10px center no-repeat;
+}
+
+.form-senha:active {
+    background-color: #EAF4BC;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    margin-top: 2px;
+    font-size: 11px;
+}
+
+.table > thead > tr > th {
+    vertical-align: top;
+    font-size: 11px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 5px;
+}
+
+.digital {
+    margin-top: -10px;
+}
+
+.bloco {
+    margin-top: -9px;
+    margin-bottom: 5px;
+}
+
+.bloco img {
+    border-radius: 4px;
+    max-width: 420px;
+}
+
+.table td[class*=col-acoes] {
+    display: flex;
+}
+
+.col-acoes > * {
+    margin: 0 5px;
+}
+
+.table > tbody > tr > td[class*=vertical-middle] {
+    vertical-align: middle;
+}
+
+.checkboxlist-vertical {
+    margin-left: 9px;
+    display: grid;
+    grid-template-columns: fit-content(10px) fit-content(100%);
+    column-gap: 9px;
+}
+
+.checkboxlist-vertical > * {
+    font-weight: 400
+}
+
+#salvarTarefa input[readonly=readonly] {
+    background-color: white;
+}
+
+#enableGatewayMobileButton {
+    width: 113px;
+    margin-left: 30px;
+}
+
+#loginAlerta24hButton {
+    width: 113px;
+    margin-top: 72px;
+}
