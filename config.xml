@@ -8,6 +8,5 @@
     </properties>
     <files>
         <file path="sms.jar" size="812534" checksum="bf9dd3c1" classpath="true"/>
-        <file path="sms.zip" size="40167181" checksum="861cc654"/>
     </files>
 </configuration>
