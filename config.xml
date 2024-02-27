@@ -7,7 +7,6 @@
         <property key="default.launcher.main.class" value="org.update4j.Bootstrap"/>
     </properties>
     <files>
-        <file path="config.xml" size="550" checksum="9314af72"/>
         <file path="sms.zip" size="40924894" checksum="b4884d34"/>
     </files>
 </configuration>
